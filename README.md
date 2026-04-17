@@ -235,7 +235,6 @@ Full Stack Developer | Student | Tech Enthusiast
 
 Give it a star ⭐ on GitHub and share it with others!
 
-```
 
 ---
 
