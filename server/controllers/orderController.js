@@ -1,7 +1,7 @@
 const Order = require('../models/Order');
 
 // @desc    Create new order
-// @route   POST /api/orders
+// @route   POST /orders
 exports.createOrder = async (req, res) => {
   try {
     const {
@@ -41,7 +41,7 @@ exports.createOrder = async (req, res) => {
 };
 
 // @desc    Get user's orders
-// @route   GET /api/orders
+// @route   GET /orders
 exports.getMyOrders = async (req, res) => {
   try {
     const orders = await Order.find({ user: req.user._id })
@@ -54,7 +54,7 @@ exports.getMyOrders = async (req, res) => {
 };
 
 // @desc    Get order by ID
-// @route   GET /api/orders/:id
+// @route   GET /orders/:id
 exports.getOrder = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id)
@@ -77,7 +77,7 @@ exports.getOrder = async (req, res) => {
 };
 
 // @desc    Update order status (admin)
-// @route   PUT /api/orders/:id/status
+// @route   PUT /orders/:id/status
 exports.updateOrderStatus = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id);
@@ -106,7 +106,7 @@ exports.updateOrderStatus = async (req, res) => {
 };
 
 // @desc    Get all orders (admin)
-// @route   GET /api/orders/admin/all
+// @route   GET /orders/admin/all
 exports.getAllOrders = async (req, res) => {
   try {
     const { status, page = 1, limit = 20 } = req.query;
@@ -136,7 +136,7 @@ exports.getAllOrders = async (req, res) => {
 };
 
 // @desc    Get admin dashboard stats
-// @route   GET /api/orders/admin/stats
+// @route   GET /orders/admin/stats
 exports.getDashboardStats = async (req, res) => {
   try {
     const totalOrders = await Order.countDocuments();

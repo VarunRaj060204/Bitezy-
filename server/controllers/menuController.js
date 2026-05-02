@@ -1,7 +1,7 @@
 const MenuItem = require('../models/MenuItem');
 
 // @desc    Get menu items for a restaurant
-// @route   GET /api/menu/restaurant/:restaurantId
+// @route   GET /menu/restaurant/:restaurantId
 exports.getMenuByRestaurant = async (req, res) => {
   try {
     const items = await MenuItem.find({ restaurant: req.params.restaurantId });
@@ -20,7 +20,7 @@ exports.getMenuByRestaurant = async (req, res) => {
 };
 
 // @desc    Get single menu item
-// @route   GET /api/menu/:id
+// @route   GET /menu/:id
 exports.getMenuItem = async (req, res) => {
   try {
     const item = await MenuItem.findById(req.params.id).populate('restaurant', 'name');
@@ -34,7 +34,7 @@ exports.getMenuItem = async (req, res) => {
 };
 
 // @desc    Create a menu item (admin)
-// @route   POST /api/menu
+// @route   POST /menu
 exports.createMenuItem = async (req, res) => {
   try {
     const item = await MenuItem.create(req.body);
@@ -45,7 +45,7 @@ exports.createMenuItem = async (req, res) => {
 };
 
 // @desc    Update a menu item (admin)
-// @route   PUT /api/menu/:id
+// @route   PUT /menu/:id
 exports.updateMenuItem = async (req, res) => {
   try {
     const item = await MenuItem.findByIdAndUpdate(req.params.id, req.body, {
@@ -62,7 +62,7 @@ exports.updateMenuItem = async (req, res) => {
 };
 
 // @desc    Delete a menu item (admin)
-// @route   DELETE /api/menu/:id
+// @route   DELETE /menu/:id
 exports.deleteMenuItem = async (req, res) => {
   try {
     const item = await MenuItem.findByIdAndDelete(req.params.id);
@@ -76,7 +76,7 @@ exports.deleteMenuItem = async (req, res) => {
 };
 
 // @desc    Get popular items (across all restaurants)
-// @route   GET /api/menu/popular
+// @route   GET /menu/popular
 exports.getPopularItems = async (req, res) => {
   try {
     const items = await MenuItem.find({ isPopular: true })

@@ -1,7 +1,7 @@
 const Restaurant = require('../models/Restaurant');
 
 // @desc    Get all restaurants
-// @route   GET /api/restaurants
+// @route   GET /restaurants
 exports.getRestaurants = async (req, res) => {
   try {
     const { search, cuisine, rating, sort, page = 1, limit = 12 } = req.query;
@@ -42,7 +42,7 @@ exports.getRestaurants = async (req, res) => {
 };
 
 // @desc    Get single restaurant
-// @route   GET /api/restaurants/:id
+// @route   GET /restaurants/:id
 exports.getRestaurant = async (req, res) => {
   try {
     const restaurant = await Restaurant.findById(req.params.id);
@@ -56,7 +56,7 @@ exports.getRestaurant = async (req, res) => {
 };
 
 // @desc    Create a restaurant (admin)
-// @route   POST /api/restaurants
+// @route   POST /restaurants
 exports.createRestaurant = async (req, res) => {
   try {
     const restaurant = await Restaurant.create(req.body);
@@ -67,7 +67,7 @@ exports.createRestaurant = async (req, res) => {
 };
 
 // @desc    Update a restaurant (admin)
-// @route   PUT /api/restaurants/:id
+// @route   PUT /restaurants/:id
 exports.updateRestaurant = async (req, res) => {
   try {
     const restaurant = await Restaurant.findByIdAndUpdate(req.params.id, req.body, {
@@ -84,7 +84,7 @@ exports.updateRestaurant = async (req, res) => {
 };
 
 // @desc    Delete a restaurant (admin)
-// @route   DELETE /api/restaurants/:id
+// @route   DELETE /restaurants/:id
 exports.deleteRestaurant = async (req, res) => {
   try {
     const restaurant = await Restaurant.findByIdAndDelete(req.params.id);
@@ -98,7 +98,7 @@ exports.deleteRestaurant = async (req, res) => {
 };
 
 // @desc    Get featured restaurants
-// @route   GET /api/restaurants/featured
+// @route   GET /restaurants/featured
 exports.getFeatured = async (req, res) => {
   try {
     const restaurants = await Restaurant.find({ featured: true }).limit(6);
